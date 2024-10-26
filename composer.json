@@ -1,0 +1,45 @@
+{
+  "name": "rayblair/dumbo-qr",
+  "type": "project",
+  "require": {
+    "php": "^8.3",
+    "notrab/dumbo": "^1.0",
+    "chillerlan/php-qrcode": "^5.0"
+  },
+  "require-dev": {
+    "guzzlehttp/guzzle": "^7.0",
+    "symfony/var-dumper": "^7.1",
+    "pestphp/pest": "^3.5",
+    "laravel/pint": "^1.18"
+  },
+  "autoload": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    },
+    "files": [
+      "utilities.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Ray Blair",
+      "email": "rayblair06@hotmail.com"
+    }
+  ],
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "scripts": {
+    "lint": [
+      "pint --test"
+    ],
+    "format": [
+      "pint"
+    ],
+    "tests": [
+      "./vendor/bin/pest"
+    ]
+  }
+}

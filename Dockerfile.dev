@@ -1,0 +1,10 @@
+# Use the base image for FrankenPHP
+FROM dunglas/frankenphp:latest
+
+# Set ENVIRONMENT as development
+ENV ENVIRONMENT=development
+
+# Install required PHP extensions for the application
+RUN install-php-extensions \
+    gd \
+    opcache
