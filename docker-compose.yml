@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
+    environment:
+      FRANKENPHP_CONFIG: "worker ./public/index.php"
     networks:
       - app_network  # Connect the service to the defined network
     ports:
@@ -15,7 +17,7 @@ services:
       - caddy_data:/data  # Persist Caddy data, such as certificates, in a named volume
       - caddy_config:/config  # Persist Caddy configuration files in a named volume
     # Uncomment the following line during development to enable interactive terminal for readable logs
-    # tty: true
+    tty: true
     depends_on:
       - composer  # Ensure the composer service runs before starting the app service
 
