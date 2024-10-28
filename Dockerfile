@@ -35,4 +35,4 @@ RUN install-php-extensions \
     opcache
 
 # Optional: Set the FRANKENPHP_CONFIG environment variable to start FrankenPHP with a specific worker script
-# ENV FRANKENPHP_CONFIG="worker ./public/index.php"
+ENV FRANKENPHP_CONFIG="worker ./public/index.php"

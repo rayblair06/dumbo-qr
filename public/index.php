@@ -1,5 +1,8 @@
 <?php
 
+// Prevent worker script termination when a client connection is interrupted
+ignore_user_abort(true);
+
 require __DIR__.'/../vendor/autoload.php';
 
 use chillerlan\QRCode\QRCode;
@@ -83,4 +86,18 @@ $app->post('/', function (Context $context) {
     }
 });
 
-$app->run();
+// Handler outside the loop for better performance (doing less work)
+$handler = static function () use ($app) {
+    $app->run();
+};
+
+$maxRequests = (int) ($_SERVER['MAX_REQUESTS'] ?? 0);
+for ($nbRequests = 0; !$maxRequests || $nbRequests < $maxRequests; ++$nbRequests) {
+    $keepRunning = \frankenphp_handle_request($handler);
+
+    gc_collect_cycles();
+
+    if (!$keepRunning) {
+        break;
+    }
+}
