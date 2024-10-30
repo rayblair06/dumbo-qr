@@ -1,8 +1,14 @@
-# Use the base image for FrankenPHP
-FROM dunglas/frankenphp:latest
+# Use a specific version of the PHP image for consistency and reliability
+FROM dunglas/frankenphp:php8.3-alpine
 
 # Set ENVIRONMENT as development
 ENV ENVIRONMENT=development
+
+# Set the working directory for the application
+WORKDIR /app
+
+# Copy the entire project directory to the container's working directory
+COPY . /app
 
 # Install required PHP extensions for the application
 RUN install-php-extensions \

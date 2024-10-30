@@ -4,8 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    environment:
-      FRANKENPHP_CONFIG: "worker ./public/index.php"
     networks:
       - app_network  # Connect the service to the defined network
     ports:

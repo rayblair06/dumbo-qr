@@ -1,5 +1,5 @@
 # Use a specific version of the PHP image for consistency and reliability
-FROM dunglas/frankenphp:builder-php8.3-alpine
+FROM dunglas/frankenphp:php8.3-alpine
 
 # Set ENVIRONMENT as production
 ENV ENVIRONMENT=production
