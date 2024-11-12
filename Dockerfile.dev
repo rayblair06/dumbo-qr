@@ -4,6 +4,9 @@ FROM dunglas/frankenphp:php8.3-alpine
 # Set ENVIRONMENT as development
 ENV ENVIRONMENT=development
 
+# Enable PHP development settings
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
 # Set the working directory for the application
 WORKDIR /app
 

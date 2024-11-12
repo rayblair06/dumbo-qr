@@ -12,6 +12,7 @@
     "pestphp/pest": "^3.5",
     "laravel/pint": "^1.18"
   },
+  "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
       "Tests\\": "tests/"

@@ -1,0 +1,17 @@
+# https://github.com/dunglas/frankenphp/blob/main/docs/config.md
+{
+	# Enable FrankenPHP and watch for changes
+	frankenphp {
+		worker {
+            file /app/public/index.php
+			watch /app
+			watch /app/**/*.php
+		}
+	}
+}
+
+localhost {
+	# Execute PHP files in the current directory and serve assets
+    root * public/
+	php_server
+}
