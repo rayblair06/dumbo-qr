@@ -28,7 +28,7 @@ jobs:
           mv frankenphp /usr/local/bin/
 
       - name: Serve PHP application
-        run: frankenphp php-server -r public/ -w public/index.php
+        run: sudo frankenphp php-server -r public/ -w public/index.php &
 
       - name: Run tests
         run: composer run tests
