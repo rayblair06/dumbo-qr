@@ -22,8 +22,13 @@ jobs:
       - name: Install PHP dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
+      - name: Install FrankenPHP static binary
+        run: |
+          curl https://frankenphp.dev/install.sh | sh
+          mv frankenphp /usr/local/bin/
+
       - name: Serve PHP application
-        run: sudo php -S 127.0.0.1:80 src/app.php &
+        run: frankenphp php-server -r public/ -w public/index.php
 
       - name: Run tests
         run: composer run tests
